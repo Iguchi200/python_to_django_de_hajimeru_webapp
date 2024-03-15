@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>CRUDアプリを作ってみよう</h1>
+  {% for article in object_list %}
+    <div class="container">
+      <p>{{ article.id }}：{{ article.author }}：{{ article.created_at }}</p>
+      <p><a href="{% url 'bbs:detail' article.id %}">{{ article.content|slice:"0:30" }}</a></p>
+    </div>
+  {% endfor %}
+  <div>
+    <a href='{% url 'bbs:create' %}'>新規作成</a>
+  </div>
+{% endblock %}
